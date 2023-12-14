@@ -4,7 +4,7 @@
   src: url(Poppins-Bol.ttf);
 }
 body {
-  font-family: "Open Sans", sans-serif,;
+  font-family: "Poppins", "Open Sans", sans-serif,;
   color: #0c0c0c;
   background-color: #ffffff;
   overflow-x: hidden;
@@ -94,6 +94,7 @@ a:focus {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  font-family: 'Poppins';
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -339,6 +340,8 @@ a:focus {
 
 .slider_section .img-box {
   margin: 45px 0;
+  height: 80%;
+  width: 80%;
 }
 
 .slider_section .img-box img {

@@ -39,11 +39,12 @@
 
 <body>
 
-  <div class="hero_area">
+  <div class="hero_area lines">
 
     <div class="hero_bg_box">
       <div class="bg_img_box">
-        <img src="images/wave.png" alt="" style="background-color: black;">
+        <img src="images/wave.png" alt="" class="hero-bg">
+      
       </div>
     </div>
 
@@ -115,8 +116,6 @@
                       :root {
                         --sphereSize: 200px;
                       }
-                      
-                      
                       
                       .globe {
                         position: relative;  
@@ -220,7 +219,7 @@
                 <div class="col-md-6">
                   <div class="img-box">
                     <img src="" alt="">
-                    <!-- <div id="lottie-container" style="width: 600px; height: 500px;"></div> -->
+                    <div id="lottie-container2" style="width: 80%; height: 80%;"></div>
                   </div>
                 </div>
               </div>
@@ -250,7 +249,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="img-box">
-                    <!-- <div id="lottie-container" style="width: 600px; height: 500px;"></div> -->
+                    <div id = "lottie-container" style="width: 50%; height: 50%;"></div>
                   </div>
                 </div>
               </div>
@@ -281,7 +280,7 @@
                 <div class="col-md-6">
                   <div class="img-box">
                     <!-- <img src="./images/chaaviedigi.jpg" alt=""> -->
-                    <!-- <div id="lottie-container" style="width: 600px; height: 500px;"></div> -->
+                    <div id="lottie-container3" style="width: 100%; height: 100%;"></div>
                   </div>
                 </div>
               </div>
@@ -312,7 +311,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="img-box">
-                    <!-- <div id="lottie-container" style="width: 600px; height: 500px;"></div> -->
+                    <div id="lottie-container4" style="width: 60%; height: 60%;"></div>
                   </div>
                 </div>
               </div>
@@ -355,14 +354,19 @@
                   DIGITAL TRANSFORMATION
                 </h5>
                 <p>
-                  Still stuck in the paper age? RPA, AI, AR/VR, Cloud, IoT – do not let these jargons worry you. Digital transformation is not always complex and expensive. From eliminating the overheads, optimizing the processes and automation, there are quick easy wins which our professionals can help you find. Right from building the transformation strategy to transforming your business, we will travel with you - all the way
+                  Still stuck in the paper age? RPA, AI, AR/VR, Cloud, IoT – do not let these jargons worry you. Digital transformation is not always complex and expensive.
+                  From eliminating the overheads, optimizing the processes and automation, there are quick easy wins which our professionals can help you find. Right from building the transformation strategy to transforming your business, we will travel with you - all the way
+                  </p>
+                  <!-- <p id="moreDetails" style="display: none;">
+                  From eliminating the overheads, optimizing the processes and automation, there are quick easy wins which our professionals can help you find. Right from building the transformation strategy to transforming your business, we will travel with you - all the way
                 </p>
+                <button id="toggleBtn" onclick="toggleDetails('moreDetails')">Show More</button> -->
                 
               </div>
             </div>
           </div>
-          <div class="col-md-4 ">
-            <div class="box ">
+          <div class="col-md-4">
+            <div class="box">
               <div class="img-box">
                 <img src="images/appdevlop.png" alt="">
               </div>
@@ -371,9 +375,13 @@
                   MOBILE APP DEVELOPMENT
                 </h5>
                 <p>
-                  Android or IOS, we will put your solution in the palms of your customers. Right from conceptualization to productionizing, you can rely on us to provide you and your customers with best in-app experiences. Flutter,Swift,Kotlin,Java - there is nothing that is not doable.
+                  Android or IOS, we will put your solution in the palms of your customers. Right from conceptualization to productionizing, you can rely on us to provide you and your customers with best in-app experiences.Flutter,Swift,Kotlin,Java - there is nothing that is not doable.
                 </p>
-                
+                <!-- <p id="moreDetails2" style="display: none;">
+                  Flutter,Swift,Kotlin,Java - there is nothing that is not doable.
+                </p>
+                <button onclick="toggleDetails('moreDetails2')">Show More</button> -->
+              
               </div>
             </div>
           </div>
@@ -387,8 +395,13 @@
                   DIGITAL MARKETING
                 </h5>
                 <p>
-                  Reach your target customers faster with our curated Digital Marketing solutions. We believe that not one size fits all. Our digital marketing professionals will help you build a brand strategy – one that is specific to your product or business. Be it SEO, Email/Social Media Marketing, Google Ads, or traditional channels, you can count on us for the best campaigns.
+                  Reach your target customers faster with our curated Digital Marketing solutions. We believe that not one size fits all. Our digital marketing professionals will help you build a brand strategy – one that is specific to your product or business.
+                  Be it SEO, Email/Social Media Marketing, Google Ads, or traditional channels, you can count on us for the best campaigns. 
                 </p>
+                <!-- <p id="moreDetails3" style="display: none;">
+                 
+                </p> -->
+                <!-- <button onclick="toggleDetils('moreDetails3')">Show More</button> -->
               </div>
             </div>
           </div>
@@ -403,8 +416,12 @@
                   WEB DEVELOPMENT
                 </h5>
                 <p>
-                  First impression is the best impression. And in this digital age, websites are your face. Make the right impression with beautiful designs and engaging content. Be it just landing page or a complex web application, we can help you build it, maintain it and market it.
+                  First impression is the best impression. And in this digital age, websites are your face. Make the right impression with beautiful designs and engaging content.Be it just landing page or a complex web application, we can help you build it, maintain it and market it.
+                  </p>
+                  <!-- <p id="moreDetails4" style="display: none;">
+                  Be it just landing page or a complex web application, we can help you build it, maintain it and market it.
                 </p>
+                <button class="" onclick="toggleDetails('moreDetails4')">Show More</button> -->
                 
               </div>
             </div>
@@ -896,6 +913,9 @@ Kozhikode, Kerala 673006
   <script>
     // Load and display Lottie animation
     var animationContainer = document.getElementById('lottie-container');
+    var animationContainer2 = document.getElementById('lottie-container2');
+    var animationContainer3 = document.getElementById('lottie-container3');
+    var animationContainer4 = document.getElementById('lottie-container4');
     
     // Replace 'your-animation.json' with the path to your Lottie animation JSON file
     var animation = bodymovin.loadAnimation({
@@ -903,8 +923,29 @@ Kozhikode, Kerala 673006
       renderer: 'svg', // You can choose 'svg', 'canvas', or 'html' based on your preference
       loop: true,
       autoplay: true,
-      path: 'images/languages.json' // Path to your Lottie animation JSON file
+      path: 'images/app.json' // Path to your Lottie animation JSON file
     });
+    var animation2 = bodymovin.loadAnimation({
+      container:animationContainer2,
+      renderer:'svg',
+      loop:true,
+      autoplay:true,
+      path:'images/toweranim.json'
+    });
+    var animation3 = bodymovin.loadAnimation({
+      container:animationContainer3,
+      renderer:'svg',
+      loop:true,
+      autoplay:true,
+      path:'images/webdevanim.json'
+    });
+    var animation4 = bodymovin.loadAnimation({
+      container:animationContainer4,
+      renderer:'svg',
+      loop:true,
+      autoplay:true,
+      path:'images/digimarketing.json'
+    })
   </script>
 
 </body>
