@@ -2,8 +2,94 @@
 <html>
 
 <head>
+
+
+<!-- Floating chat icon -->
+<div class="chat-icon" onclick="toggleChat()">
+   <div id="lottie-container8" style="width: 8%; height: 8%;" class="chat-icon"></div>
+</div>
+
+<!-- Chat container (hidden by default) -->
+<div class="chat-container" id="chatContainer">
+  <div class="chat-header">
+      Need Support ?
+  </div>
+  <div class="chat-log" id="chatLog">
+      <!-- Chat messages will appear here -->
+  </div>
+  <div class="chat-questions" id="chatQuestions">
+    <button class="question-button" onclick="showAnswer('Q1')">Phone Number</button>
+    <button class="question-button" onclick="showAnswer('Q2')">Email</button>
+    <button class="question-button" onclick="showAnswer('Q3')">Services</button>
+  </div>
+  <!-- <div class="chat-input">
+      <input type="text" id="userInput" placeholder="Type a message...">
+      <button class="chat-button" onclick="sendMessage()">Send</button>
+  </div> -->
+</div>
+<style>
+  /* Floating chat icon */
+.chat-icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 999;
+}
+
+.chat-icon img {
+  width: 50px;
+  height: 50px;
+}
+
+/* Chat container styles (hidden by default) */
+.chat-container {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  max-width: 400px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 0;
+  overflow: hidden;
+}
+
+.chat-header {
+  background-color: #0f054c;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+.chat-log {
+  padding: 10px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.chat-input {
+  display: flex;
+  padding: 10px;
+}
+
+.chat-input {
+  flex: 1;
+  padding: 8px;
+}
+
+button {
+  padding: 8px;
+  background-color: #0f054c;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+</style>
+
+
+
   <!-- Basic -->
-  <meta charset="utf-8" />
+  <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <!-- Mobile Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -34,6 +120,8 @@
   <link href="css/style.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
+
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 </head>
 
@@ -66,20 +154,20 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent" style="font-family: 'Poppins';">
             <ul class="navbar-nav  ">
               <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="about.html"> About</a>
+                <a class="nav-link" href="#about"> About</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="service.html">Services</a>
+                <a class="nav-link" href="#home">Services</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="works.html">Works</a>
+                <a class="nav-link" href="#products">Works</a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link" href="team.html">Team</a>
-              </li>
+              </li> -->
             </ul>
           </div>
         </nav>
@@ -87,7 +175,7 @@
     </header>
     <!-- end header section -->
     <!-- slider section -->
-    <section class="slider_section ">
+    <section class="slider_section " id="home">
       <div id="customCarousel1" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -95,7 +183,7 @@
               <div class="row">
                 <div class="col-md-6 ">
                   <div class="detail-box">
-                    <h1 style="color: #0f054c;font-family:'Poppins';">
+                    <h1 style="color: #0f054c;font-family:'Poppins';" data-aos="fade-right">
                       Keying <br>
                       Smart Moves
                     </h1>
@@ -110,7 +198,7 @@
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <div class="img-box">
+                  <div class="img-box" data-aos="zoom-out-up">
                     <!-- <div id="lottie-container" style="width: 600px; height: 500px;"></div> -->
                     <style>
                       :root {
@@ -195,12 +283,13 @@
               </div>
             </div>
           </div>
-          <div class="carousel-item ">
+
+          <div class="carousel-item">
             <div class="container ">
               <div class="row">
                 <div class="col-md-6 ">
                   <div class="detail-box">
-                    <h1 style="color: #0f054c;">
+                    <h1 style="color: #0f054c;" data-aos="fade-right">
                       Digital Transformation
                     </h1>
                     <p style="color: #0f054c;">
@@ -218,13 +307,14 @@
                 </div>
                 <div class="col-md-6">
                   <div class="img-box">
-                    <img src="" alt="">
+                    <img src="" alt="" data-aos="zoom-out-up">
                     <div id="lottie-container2" style="width: 80%; height: 80%;"></div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
           <div class="carousel-item">
             <div class="container ">
               <div class="row">
@@ -335,129 +425,30 @@
 
   <!-- service section -->
   
-  <section class="service_section layout_padding">
-    <div class="service_container">
-      <div class="container ">
-        <div class="heading_container heading_center">
-          <h2>
-            Our <span>Services</span>
-          </h2>
-        </div>
-        <div class="row">
-          <div class="col-md-4 ">
-            <div class="box ">
-              <div class="img-box">
-                <img src="images/digitrans.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  DIGITAL TRANSFORMATION
-                </h5>
-                <p>
-                  Still stuck in the paper age? RPA, AI, AR/VR, Cloud, IoT – do not let these jargons worry you. Digital transformation is not always complex and expensive.
-                  From eliminating the overheads, optimizing the processes and automation, there are quick easy wins which our professionals can help you find. Right from building the transformation strategy to transforming your business, we will travel with you - all the way
-                  </p>
-                  <!-- <p id="moreDetails" style="display: none;">
-                  From eliminating the overheads, optimizing the processes and automation, there are quick easy wins which our professionals can help you find. Right from building the transformation strategy to transforming your business, we will travel with you - all the way
-                </p>
-                <button id="toggleBtn" onclick="toggleDetails('moreDetails')">Show More</button> -->
-                
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="box">
-              <div class="img-box">
-                <img src="images/appdevlop.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  MOBILE APP DEVELOPMENT
-                </h5>
-                <p>
-                  Android or IOS, we will put your solution in the palms of your customers. Right from conceptualization to productionizing, you can rely on us to provide you and your customers with best in-app experiences.Flutter,Swift,Kotlin,Java - there is nothing that is not doable.
-                </p>
-                <!-- <p id="moreDetails2" style="display: none;">
-                  Flutter,Swift,Kotlin,Java - there is nothing that is not doable.
-                </p>
-                <button onclick="toggleDetails('moreDetails2')">Show More</button> -->
-              
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 ">
-            <div class="box ">
-              <div class="img-box">
-                <img src="images/digimarketing.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  DIGITAL MARKETING
-                </h5>
-                <p>
-                  Reach your target customers faster with our curated Digital Marketing solutions. We believe that not one size fits all. Our digital marketing professionals will help you build a brand strategy – one that is specific to your product or business.
-                  Be it SEO, Email/Social Media Marketing, Google Ads, or traditional channels, you can count on us for the best campaigns. 
-                </p>
-                <!-- <p id="moreDetails3" style="display: none;">
-                 
-                </p> -->
-                <!-- <button onclick="toggleDetils('moreDetails3')">Show More</button> -->
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 ">
-            <div class="box ">
-              <div class="img-box">
-                <img src="images/webdev.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  WEB DEVELOPMENT
-                </h5>
-                <p>
-                  First impression is the best impression. And in this digital age, websites are your face. Make the right impression with beautiful designs and engaging content.Be it just landing page or a complex web application, we can help you build it, maintain it and market it.
-                  </p>
-                  <!-- <p id="moreDetails4" style="display: none;">
-                  Be it just landing page or a complex web application, we can help you build it, maintain it and market it.
-                </p>
-                <button class="" onclick="toggleDetails('moreDetails4')">Show More</button> -->
-                
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- <div class="btn-box">
-          <a href="">
-            View All
-          </a>
-        </div> -->
-      </div>
-    </div>
-  </section>
-
+  
   <!-- end service section -->
 
 
   <!-- about section -->
 
-  <section class="about_section layout_padding">
-    <div class="container  ">
+  <section class="about_section layout_padding" id="about">
+    <div class="container">
       <div class="heading_container heading_center">
-        <h2>
+        <h2 data-aos="zoom-out-up">
           About <span>Us</span>
         </h2>
-        <p style="font-family: 'Poppins';">
+        <p style="font-family: 'Poppins';" data-aos="zoom-out-down">
           At Chaavie, our focus is always the success of our customer. With Digital being the new buzz and the way of business, we can help you navigate the digital cross winds and chart your way to success. Our way of business is built on trust, innovation and delivering the best value to our customers.
         </p>
       </div>
       <div class="row">
         <div class="col-md-6 ">
           <div class="img-box">
-            <img src="images/bannerclt.jpg" alt="" style="opacity: 25%;">
+            <!-- <img src="images/bannerclt.jpg" alt="" style="opacity: 25%;"> -->
+            <div id="lottie-container9" style="width: 100%; height: 100%;" data-aos="zoom-out-left"></div>
           </div>
         </div>
-        <div class="col-md-6" style="font-family: 'Poppins';">
+        <div class="col-md-6" style="font-family: 'Poppins';" data-aos="zoom-out">
           <div class="detail-box">
             <h3>
               Chaavie Solutions
@@ -465,15 +456,16 @@
             <p>
               Based in the land of Zamorins, Kozhikode, Chaavie Solutions is a new age digital services company focusing on helping customers start or chart their digital journey. We are a group of highly motivated professionals, passionate at what we do. Our experience ranges from handling and managing Operations of complex Oil and Gas installations to complex software deliveries, Digital Transformation to Digital marketing. We are living in a fast-paced world where technology and business needs keeps changing by the day. We ensure that the best of the technology is made available to our customers and our agile project management ensures that the solution is never out-dated.
             </p>
-            <!-- <p>
-              Molestiae odio earum non qui cumque provident voluptates, repellendus exercitationem, possimus at iste corrupti officiis unde alias eius ducimus reiciendis soluta eveniet. Nobis ullam ab omnis quasi expedita.
-            </p> -->
-            <!-- <a href="">
-              Read More
-            </a> -->
+            
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <div class="container">
+
     </div>
   </section>
 
@@ -481,217 +473,92 @@
 
   <!-- why section -->
 
-  <section class="why_section layout_padding">
+  <section class="why_section layout_padding" id="products">
     <div class="container">
       <div class="heading_container heading_center">
-        <h2>
+        <h2 data-aos="zoom-out-up">
           Our <span>Products</span>
         </h2>
       </div>
-      <div class="why_container" style="font-family: 'Poppins';">
-        <div class="box">
-          <div class="img-box">
-            <img src="images/logistic.png" alt="">
-          </div>
-          <div class="detail-box">
-            <h5>
-              Logistic Platform
-            </h5>
-            <p>
-              Our customizable logistics platform, that can work as a TMS for logistics companies to manage fleets and trips. This comes with a web/mobile application for customers, administration capacities for transporters and a mobile application for drivers. And we can add a lot more, just ask us.
-            </p>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/erp.png" alt="">
-          </div>
-          <div class="detail-box">
-            <h5>
-              ERP Platform
-            </h5>
-            <p>
-              Our customizable ERP platform, designed to streamline your business operations with precision and efficiency. This platform can be customised to meet your unique needs - our platform seamlessly integrates key processes, from inventory management to financial reporting. Empower your organization with real-time insights, increased collaboration, and simplified workflows.
-            </p>
+
+      <section class="about_section layout_padding">
+        <div class="container  ">
+        
+          <div class="row">
+            <div class="col-md-6 ">
+              <div class="img-box" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
+                <!-- <img src="images/bannerclt.jpg" alt="" style="opacity: 25%;"> -->
+                <div id="lottie-container5" style="width: 80%; height: 80%;"></div>
+              </div>
+            </div>
+            <div class="col-md-6" style="font-family: 'Poppins';" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine">
+              <div class="detail-box">
+                <h3>
+                  Logistic Platform
+                </h3>
+                <p>
+                  Our customizable logistics platform, that can work as a TMS for logistics companies to manage fleets and trips. This comes with a web/mobile application for customers, administration capacities for transporters and a mobile application for drivers. And we can add a lot more, just ask us.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/ecomerce.png" alt="">
-          </div>
-          <div class="detail-box">
-            <h5>
-              E-Commerce Platform
-            </h5>
-            <p>
-              Our feature-rich, customizable e-commerce platform built on WooCommerce. This can be customized further to suit your unique requirements. Our application will help you seamlessly manage your online store, from product listings to secure payments, while enjoying the flexibility to adapt and scale as your business grows. Benefit from a user-friendly interface, robust inventory management, and a vast array of plugins and themes.
-            </p>
+      </section>
+
+      <section class="about_section layout_padding">
+        <div class="container">
+        
+          <div class="row">
+            <div class="col-md-6" style="font-family: 'Poppins';" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
+              <div class="detail-box">
+                <h3>
+                  ERP Platform
+                </h3>
+                <p>
+                  Our customizable logistics platform, that can work as a TMS for logistics companies to manage fleets and trips. This comes with a web/mobile application for customers, administration capacities for transporters and a mobile application for drivers. And we can add a lot more, just ask us.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine">
+              <div class="img-box">
+                <!-- <img src="images/bannerclt.jpg" alt="" style="opacity: 25%;"> -->
+                <div id="lottie-container6" style="width: 80%; height: 80%;"></div>
+              </div>
+            </div>
           </div>
         </div>
-        <!-- <div class="box">
-          <div class="img-box">
-            <img src="images/w4.png" alt="">
+      </section>
+
+      <section class="about_section layout_padding">
+        <div class="container  ">
+        
+          <div class="row">
+            <div class="col-md-6 " data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
+              <div class="img-box">
+                <!-- <img src="images/bannerclt.jpg" alt="" style="opacity: 25%;"> -->
+                <div id="lottie-container7" style="width: 80%; height: 80%;"></div>
+              </div>
+            </div>
+            <div class="col-md-6" style="font-family: 'Poppins';" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine">
+              <div class="detail-box">
+                <h3>
+                  E-Commerce Platform
+                </h3>
+                <p>
+                  Our feature-rich, customizable e-commerce platform built on WooCommerce. This can be customized further to suit your unique requirements. Our application will help you seamlessly manage your online store, from product listings to secure payments, while enjoying the flexibility to adapt and scale as your business grows. Benefit from a user-friendly interface, robust inventory management, and a vast array of plugins and themes.
+                </p>
+              </div>
+            </div>
           </div>
-          <div class="detail-box">
-            <h5>
-              Happy Customers
-            </h5>
-            <p>
-              Incidunt odit rerum tenetur alias architecto asperiores omnis cumque doloribus aperiam numquam! Eligendi corrupti, molestias laborum dolores quod nisi vitae voluptate ipsa? In tempore voluptate ducimus officia id, aspernatur nihil.
-              Tempore laborum nesciunt ut veniam, nemo officia ullam repudiandae repellat veritatis unde reiciendis possimus animi autem natus
-            </p>
-          </div>
-        </div> -->
-      </div>
+        </div>
+      </section>
     </div>
   </section>
 
   <!-- end why section -->
 
   <!-- team section -->
-  <section class="team_section layout_padding">
-    <div class="container-fluid">
-      <div class="heading_container heading_center">
-        <h2 class="">
-          Our <span> Team</span>
-        </h2>
-      </div>
-
-      <div class="team_container">
-        <div class="row">
-          <div class="col-lg-3 col-sm-6">
-            <div class="box ">
-              <div class="img-box">
-                <img src="images/person.jpg" class="img1" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  User name
-                </h5>
-                <p>
-                  User position
-                </p>
-              </div>
-              <!-- <div class="social_box">
-                <a href="#">
-                  <i class="fa fa-facebook" aria-hidden="true"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-twitter" aria-hidden="true"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-linkedin" aria-hidden="true"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-instagram" aria-hidden="true"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-youtube-play" aria-hidden="true"></i>
-                </a>
-              </div> -->
-            </div>
-          </div>
-          <div class="col-lg-3 col-sm-6">
-            <div class="box ">
-              <div class="img-box">
-                <img src="images/person.jpg" class="img1" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  User Name
-                </h5>
-                <p>
-                 User Position
-                </p>
-              </div>
-              <!-- <div class="social_box">
-                <a href="#">
-                  <i class="fa fa-facebook" aria-hidden="true"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-twitter" aria-hidden="true"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-linkedin" aria-hidden="true"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-instagram" aria-hidden="true"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-youtube-play" aria-hidden="true"></i>
-                </a>
-              </div> -->
-            </div>
-          </div>
-          <div class="col-lg-3 col-sm-6">
-            <div class="box ">
-              <div class="img-box">
-                <img src="images/person.jpg" class="img1" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  User Name
-                </h5>
-                <p>
-                  User Position
-                </p>
-              </div>
-              <!-- <div class="social_box">
-                <a href="#">
-                  <i class="fa fa-facebook" aria-hidden="true"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-twitter" aria-hidden="true"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-linkedin" aria-hidden="true"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-instagram" aria-hidden="true"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-youtube-play" aria-hidden="true"></i>
-                </a>
-              </div> -->
-            </div>
-          </div>
-          <div class="col-lg-3 col-sm-6">
-            <div class="box ">
-              <div class="img-box">
-                <img src="images/person.jpg" class="img1" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  User Name
-                </h5>
-                <p>
-                  User Postion
-                </p>
-              </div>
-              <!-- <div class="social_box">
-                <a href="#">
-                  <i class="fa fa-facebook" aria-hidden="true"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-twitter" aria-hidden="true"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-linkedin" aria-hidden="true"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-instagram" aria-hidden="true"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-youtube-play" aria-hidden="true"></i>
-                </a>
-              </div> -->
-            </div>
-          </div>
-      
-        </div>
-      </div>
-    </div>
-  </section>
+  
   <!-- end team section -->
 
 
@@ -700,14 +567,14 @@
   <section class="client_section layout_padding">
     <div class="container">
       <div class="heading_container heading_center psudo_white_primary mb_45" style="font-family: 'Poppins';">
-        <h2>
+        <h2 data-aos="zoom-out-up">
           What says our <span>Customers</span>
         </h2>
       </div>
       
       <div class="carousel-wrap ">
         <div class="owl-carousel client_owl-carousel">
-          <div class="item">
+          <div class="item" data-aos="fade-up" data-aos-anchor-placement='center-center'>
             <div class="box">
               <div class="img-box">
                 <img src="images/person.jpg" alt="" class="box-img">
@@ -716,43 +583,22 @@
                 <div class="client_id">
                   <div class="client_info">
                     <h6>
-                     Happy Group
+                     English Channel
                     </h6>
                     <p>
-                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                      Abdul Gafoor
                     </p>
                   </div>
                   <i class="fa fa-quote-left" aria-hidden="true"></i>
                 </div>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis </p>
+                  Great experience with them ,Highly professional in service .Highly recommended
+               </p>
               </div>
             </div>
           </div>
-        
-          <div class="item">
-            <div class="box">
-              <div class="img-box">
-                <img src="images/person.jpg" alt="" class="box-img">
-              </div>
-              <div class="detail-box">
-                <div class="client_id">
-                  <div class="client_info">
-                    <h6>
-                      Doctor One
-                    </h6>
-                    <p>
-                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    </p>
-                  </div>
-                  <i class="fa fa-quote-left" aria-hidden="true"></i>
-                </div>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis </p>
-              </div>
-            </div>
-          </div>
-          <div class="item">
+      
+          <div class="item" data-aos="fade-up" data-aos-anchor-placement='center-center'>
             <div class="box">
               <div class="img-box">
                 <img src="images/person.jpg" alt="" class="box-img">
@@ -764,13 +610,13 @@
                       Leeway
                     </h6>
                     <p>
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                      Subin Babu
                     </p>
                   </div>
                   <i class="fa fa-quote-left" aria-hidden="true"></i>
                 </div>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis </p>
+                  Outstanding Services! Expert team and efficient solutions. Highly recommended!"</p>
               </div>
             </div>
           </div>
@@ -844,26 +690,70 @@ Kozhikode, Kerala 673006
               Links
             </h4>
             <div class="info_links">
-              <a class="active" href="index.html">
+              <a class="active" href="">
                 Home
               </a>
-              <a class="" href="about.html">
+              <a class="" href="#about">
                 About
               </a>
-              <a class="" href="service.html">
+              <a class="" href="#home">
                 Services
               </a>
-              <a class="" href="works.html">
+              <a class="" href="#products">
                 Works
-              </a>
-              <a class="" href="team.html">
-                Team
               </a>
             </div>
           </div>
         </div>
-        <!-- <div class="col-md-6 col-lg-3 info_col ">
-          <h4>
+        <div class="col-md-6 col-lg-3 info_col ">
+          <div class="info_contact">
+            <h4>
+              Address
+            </h4>
+            <div class="contact_link_box">
+              <!-- Google Maps Embed Code -->
+              <style>
+                .map-responsive {
+                  overflow: hidden;
+                  padding-bottom: 56.25%;
+                  position: relative;
+                  height: 0;
+                }
+              
+                .map-responsive iframe {
+                  left: 0;
+                  top: 0;
+                  height: 100%;
+                  width: 100%;
+                  position: absolute;
+                }
+              </style>
+              <div class="map-responsive">
+                <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.050701676767!2d75.79017451480074!3d11.27167259180159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba5bd159b785c9d%3A0xe2ecac54bae63d3f!2sKottaram%20Cross%20Rd%2C%20East%20Nadakkave%2C%20Kozhikode%2C%20Kerala%20673006!5e0!3m2!1sen!2sin!4v1641795651404!5m2!1sen!2sin&t=k"
+                width="600"
+                height="450"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"></iframe>
+              </div>
+              <!-- End of Google Maps Embed Code -->
+          
+              <a href="tel:091 8086730010">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <span>
+                  Call +91 8086730010
+                </span>
+              </a>
+              <a href="mailto:contact@chaaviesolutions.com">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                <span>
+                  contact@chaaviesolutions.com
+                </span>
+              </a>
+            </div>
+          </div>
+          <!-- <h4>
             Subscribe
           </h4>
           <form action="#">
@@ -871,8 +761,8 @@ Kozhikode, Kerala 673006
             <button type="submit">
               Subscribe
             </button>
-          </form>
-        </div> -->
+          </form> -->
+        </div>
       </div>
     </div>
   </section>
@@ -909,6 +799,7 @@ Kozhikode, Kerala 673006
 
   <!--lottie-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.9/lottie.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
   <script>
     // Load and display Lottie animation
@@ -916,6 +807,11 @@ Kozhikode, Kerala 673006
     var animationContainer2 = document.getElementById('lottie-container2');
     var animationContainer3 = document.getElementById('lottie-container3');
     var animationContainer4 = document.getElementById('lottie-container4');
+    var animationContainer5 = document.getElementById('lottie-container5');
+    var animationContainer6 = document.getElementById('lottie-container6');
+    var animationContainer7 = document.getElementById('lottie-container7');
+    var animationContainer8 = document.getElementById('lottie-container8');
+    var animationContainer9 = document.getElementById('lottie-container9');
     
     // Replace 'your-animation.json' with the path to your Lottie animation JSON file
     var animation = bodymovin.loadAnimation({
@@ -945,7 +841,45 @@ Kozhikode, Kerala 673006
       loop:true,
       autoplay:true,
       path:'images/digimarketing.json'
-    })
+    });
+    var animation5 = bodymovin.loadAnimation({
+      container:animationContainer5,
+      renderer:'svg',
+      loop:true,
+      autoplay:true,
+      path:'images/logisticanim.json'
+    });
+    var animation6 = bodymovin.loadAnimation({
+      container:animationContainer6,
+      renderer:'svg',
+      loop:true,
+      autoplay:true,
+      path:'images/erpanime.json'
+    });
+    var animation7 = bodymovin.loadAnimation({
+      container:animationContainer7,
+      renderer:'svg',
+      loop:true,
+      autoplay:true,
+      path:'images/ecomerce.json'
+    });
+    var animation8 = bodymovin.loadAnimation({
+      container:animationContainer8,
+      renderer:'svg',
+      loop:true,
+      autoplay:true,
+      path:'images/botanim.json'
+    });
+    var animation9 = bodymovin.loadAnimation({
+      container:animationContainer9,
+      renderer:'svg',
+      loop:true,
+      autoplay:true,
+      path:'images/aboutusanim.json'
+    });
+  </script>
+  <script>
+    AOS.init();
   </script>
 
 </body>
